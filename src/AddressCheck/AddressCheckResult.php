@@ -28,7 +28,7 @@ class AddressCheckResult {
 	{
         $this->encoders = array(new XmlEncoder(), new JsonEncoder());
         $this->normalizers = array(new ObjectNormalizer());
-        $this->serializer = new Serializer($normalizers, $encoders);
+        $this->serializer = new Serializer($this->normalizers, $this->encoders);
 
 		$this->bodyData = $bodyData;
 		$this->curlSession = $curlSession;
