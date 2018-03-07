@@ -2,7 +2,7 @@
 
 namespace XQueue\AddressCheck;
 
-use AddressCheckResult;
+use XQueue\AddressCheck\AddressCheckResult;
 
 abstract class AbstractAddressCheckService
 {
