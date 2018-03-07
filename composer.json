@@ -22,10 +22,10 @@
         "phpunit/phpunit-mock-objects": "2.3.0"
     },
     "autoload": {
-        "psr-4": {"AddressCheck\\": "src/AddressCheck"}
+        "psr-4": {"XQueue\\AddressCheck\\": "src/AddressCheck"}
     },
     "autoload-dev": {
-        "psr-4": {"AddressCheck\\": "tests/AddressCheck"}
+        "psr-4": {"XQueue\\AddressCheck\\": "tests/AddressCheck"}
     },
     "scripts": {
         "test": [
