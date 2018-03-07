@@ -2,7 +2,7 @@
 
 namespace XQueue\AddressCheck;
 
-use XQueue\AddressCheck\AddressCheckResultWrapper;
+use XQueue\AddressCheck\AddressCheckResult;
 use XQueue\AddressCheck\AddressCheckException;
 
 abstract class AbstractAddressCheckService
@@ -113,7 +113,7 @@ abstract class AbstractAddressCheckService
         $requestUrl = $this->constructRequestUrl($resourcePath, $queryParameters);
         $headers = $this->constructHeaders();
         $curlSession = curl_init($requestUrl);
-        
+
         $options = array(
             CURLOPT_HEADER => false,
             CURLOPT_RETURNTRANSFER => true,
@@ -185,9 +185,9 @@ abstract class AbstractAddressCheckService
         $response = curl_exec($curlSession);
         // coerce all false values to null
         $response = $response ? $response : null;
-        
+
         try {
-            $result = new AddressCheckResultWrapper($response, $curlSession);
+            $result = new AddressCheckResult($response, $curlSession);
 
             if( $this->debug ) {
                 $this->printDebugInformation($curlSession, $result);
@@ -207,17 +207,6 @@ abstract class AbstractAddressCheckService
         }
     }
 
-    protected function appendArrayFields($params, $name, $fieldValues)
-    {
-        if(isset ($fieldValues) && count($fieldValues) > 0) {
-            $params ["$name"] = array();
-            foreach ($fieldValues as $value) {
-                $params ["$name"] [] = urlencode(utf8_encode($value));//urlencode($value);
-            }
-        }
-        return $params;
-    }
-
     private function printDebugInformation($curlSession, $result = null, $exception = null)
     {
         rewind($this->verboseOut);
@@ -225,7 +214,7 @@ abstract class AbstractAddressCheckService
         $sessionLog = stream_get_contents($this->verboseOut);
         $sessionLog = preg_replace("/^Authorization: .*$/m", "Authorization: ***redacted***", $sessionLog);
 
-        if(defined('RUNNING_IN_PHPUNIT') && RUNNING_IN_PHPUNIT) {
+        if( defined('RUNNING_IN_PHPUNIT') && RUNNING_IN_PHPUNIT ) {
             echo "\n";
             echo "cURL session log:\n";
             echo $sessionLog . "\n";

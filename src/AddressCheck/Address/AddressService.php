@@ -6,92 +6,92 @@ use XQueue\AddressCheck\AbstractAddressCheckService;
 
 class AddressService extends AbstractAddressCheckService
 {
-    function fastQualityCheck($email)
+    public function fastQualityCheck($email)
     {
         return $this->get("address/quality/$email");
     }
 
-    function enhancedQualityCheck($email)
+    public function enhancedQualityCheck($email)
     {
         return $this->get("address/quality-n/$email");
     }
 
-    function syntaxCheck($email)
+    public function syntaxCheck($email)
     {
         return $this->get("address/syntax/$email");
     }
 
-    function blacklistCheck($email)
+    public function blacklistCheck($email)
     {
         return $this->get("address/blacklist/$email");
     }
 
-    function botriskCheck($email)
+    public function botriskCheck($email)
     {
         return $this->get("address/botrisk/$email");
     }
 
-    function challengeResponseCheck($email)
+    public function challengeResponseCheck($email)
     {
         return $this->get("address/crrisk/$email");
     }
 
-    function companyDomainCheck($email)
+    public function companyDomainCheck($email)
     {
         return $this->get("address/companydomain/$email");
     }
 
-    function disposableAddressCheck($email)
+    public function disposableAddressCheck($email)
     {
         return $this->get("address/disposable/$email");
     }
 
-    function educationDomainCheck($email)
+    public function educationDomainCheck($email)
     {
         return $this->get("address/educationdomain/$email");
     }
 
-    function genderCheck($email)
+    public function genderCheck($email)
     {
         return $this->get("address/gender/$email");
     }
 
-    function gravatarCheck($email)
+    public function gravatarCheck($email)
     {
         return $this->get("address/gravatar/$email");
     }
 
-    function iwtCheck($email)
+    public function iwtCheck($email)
     {
         return $this->get("address/iwt/$email");
     }
 
-    function languageCheck($email)
+    public function languageCheck($email)
     {
         return $this->get("address/language/$email");
     }
 
-    function noAdvertisingCheck($email)
+    public function noAdvertisingCheck($email)
     {
         return $this->get("address/no-advertising/$email");
     }
 
-    function publicServiceDomainCheck($email)
+    public function publicServiceDomainCheck($email)
     {
         return $this->get("address/publicservicedomain/$email");
     }
 
-    function robinsonListCheck($email)
+    public function robinsonListCheck($email)
     {
         return $this->get("address/robinsonlist/$email");
     }
 
-    function roleCheck($email)
+    public function roleCheck($email)
     {
         return $this->get("address/role/$email");
     }
 
-    function spamTrapCheck($email)
+    public function spamTrapCheck($email)
     {
         return $this->get("address/spamtrap/$email");
     }
