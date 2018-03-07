@@ -1,6 +1,7 @@
 {
     "name": "xqueue/addresscheck-client",
     "description": "API-Client to XQ:AddressCheck",
+    "version": "1.0.0-dev",
     "keywords": ["XQueue", "AddressCheck"],
     "homepage": "https://www.addresscheck.eu",
     "type": "library",
