@@ -2,11 +2,12 @@
 
 namespace XQueue\AddressCheck;
 
-use XQueue\AddressCheck\AddressCheckResult;
+use XQueue\AddressCheck\AddressCheckResultWrapper;
+use XQueue\AddressCheck\AddressCheckException;
 
 abstract class AbstractAddressCheckService
 {
-    private $baseUri = 'https://adc.maileon.com/svc/2.0/';
+    private $baseUri = 'https://adc.maileon.com/svc/2.0';
 
     private $username;
     private $password;
@@ -166,7 +167,7 @@ abstract class AbstractAddressCheckService
     private function constructHeaders()
     {
         if( empty($this->username) || empty($this->password) ) {
-            throw new ConfigurationException("Authorization not set");
+            throw new AddressCheckException("Authorization not set");
         }
 
         $headers = array(
@@ -186,7 +187,7 @@ abstract class AbstractAddressCheckService
         $response = $response ? $response : null;
         
         try {
-            $result = new AddressCheckResult($response, $curlSession);
+            $result = new AddressCheckResultWrapper($response, $curlSession);
 
             if( $this->debug ) {
                 $this->printDebugInformation($curlSession, $result);
@@ -231,7 +232,7 @@ abstract class AbstractAddressCheckService
             
             if( $result != null ) {
                 echo "Result:\n";
-                echo $result->toString() . "\n";
+                echo $result . "\n";
             }
             
             if( $exception != null ) {
@@ -247,7 +248,7 @@ abstract class AbstractAddressCheckService
             if( $result != null ) {
                 echo "<h3>Result</h3>\n";
                 echo "<pre>\n";
-                echo htmlentities($result->toString());
+                echo htmlentities($result);
                 echo "</pre>\n";
             }
             

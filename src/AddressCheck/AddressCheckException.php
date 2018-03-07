@@ -6,7 +6,7 @@ namespace XQueue\AddressCheck;
  * An exception that is thrown when a technical error has occurred either in the communication
  * with AddressCheck's REST API or in the API itself.
  */
-class AddressCheckException extends RuntimeException
+class AddressCheckException extends \RuntimeException
 {
     private $response;
 
