@@ -1,9 +1,9 @@
 {
-    "name": "xqueue/maileon-api-client",
-    "description": "API-Client to XQ:Maileon",
+    "name": "xqueue/addresscheck-api-client",
+    "description": "API-Client to XQ:AddressCheck",
     "version": "1.0.0-dev",
-    "keywords": ["XQueue", "Maileon"],
-    "homepage": "https://www.maileon.de",
+    "keywords": ["XQueue", "AddressCheck"],
+    "homepage": "https://www.addresscheck.eu",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -19,6 +19,6 @@
         "ext-libxml": "*"
     },
     "autoload": {
-        "psr-4": {"XQueue\\Maileon\\API\\": "src/XQueue/Maileon/API"}
+        "psr-4": {"XQueue\\AddressCheck\\API\\": "src/XQueue/AddressCheck/API/"}
     }
 }
