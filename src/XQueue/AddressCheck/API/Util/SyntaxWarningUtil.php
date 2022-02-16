@@ -2,8 +2,13 @@
 
 namespace XQueue\AddressCheck\API\Util;
 
+use XQueue\AddressCheck\API\AddressCheckException;
+
 abstract class SyntaxWarningUtil
 {
+    /**
+     * @var array All syntax warnings with ID and a corresponding message
+     */
     private static $syntaxWarnings = array(
         "synm001" => "No '@' found",
         "synm002" => "No local part (mailbox name) found",
@@ -56,6 +61,13 @@ abstract class SyntaxWarningUtil
         "extm030" => "The first chracter must be either a letter or a digit",
     );
     
+    /**
+     * Returns the message for a syntax warning id.
+     * 
+     * @param string $id The ID of the syntax warning
+     * @throws AddressCheckException if the ID is not valid
+     * @return string The warning message
+     */
     public static function getWarningMessageById($id) {
         if( !array_key_exists($id, self::$syntaxWarnings) ) {
             throw new AddressCheckException("ID of syntax warning not valid");
